@@ -1,0 +1,123 @@
+.sidebar {
+    .top, .bottom {
+        display: flex;
+    }
+
+    .top > * { flex: 1 }
+
+    @media only screen and (min-width: 890px) {
+        .top, .bottom {
+            flex-direction: column;
+        }
+
+        .categories {
+            padding-left: 20px;
+        }
+    }
+
+    @media only screen and (max-width: 890px) {
+        .top, .bottom {
+            flex-direction: column;
+        }
+    }
+}
+
+.date,
+.license,
+.bytes {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+
+    svg {
+        flex-shrink: 0;
+        margin-right: 7px;
+        height: 1em;
+        width: auto;
+    }
+}
+
+.date {
+    [title], :global(.ember-tooltip-target) {
+        cursor: help;
+    }
+}
+
+.license {
+    a {
+        color: var(--main-color);
+    }
+}
+
+.bytes {
+    font-variant-numeric: tabular-nums;
+}
+
+.copy-help {
+    font-size: 12px;
+}
+
+.copy-button,
+.copy-fallback {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    padding: 7px 12px;
+    font-family: var(--font-monospace);
+    font-size: 14px;
+    line-height: 1.5em;
+    color: var(--main-color);
+    background: transparent;
+    border-radius: 5px;
+    border: solid 2px var(--gray-border);
+
+    span {
+        flex: auto;
+        display: block;
+        word-break: break-word;
+    }
+}
+
+.copy-button {
+    text-align: start;
+    cursor: pointer;
+
+    &:hover {
+        background-color: white;
+    }
+}
+
+.copy-icon {
+    flex-shrink: 0;
+    height: 1.1em;
+    width: auto;
+    /* for slightly nicer alignment... */
+    margin-top: -3px;
+    margin-left: 10px;
+    opacity: 0;
+    transition: opacity 100ms;
+
+    .copy-button:hover & {
+        opacity: 1;
+    }
+}
+
+.more-versions-link,
+.reverse-deps-link {
+    composes: small from '../styles/shared/typography.module.css';
+}
+
+.playground-button {
+    composes: yellow-button small from '../styles/shared/buttons.module.css';
+    justify-content: center;
+    width: 220px;
+    margin-top: 20px;
+}
+
+.playground-help {
+    composes: small from '../styles/shared/typography.module.css';
+    max-width: 220px;
+    text-align: justify;
+    line-height: 1.3em;
+}

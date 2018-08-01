@@ -1,0 +1,19 @@
+.row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.crate-column {
+    width: 200px;
+}
+
+.date-column {
+    composes: small from '../styles/shared/typography.module.css';
+}
+
+.accept-button,
+.decline-button {
+    composes: yellow-button small from '../styles/shared/buttons.module.css';
+}

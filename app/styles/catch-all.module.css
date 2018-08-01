@@ -1,0 +1,26 @@
+.wrapper {
+    height: 100%;
+    display: grid;
+    place-items: center;
+}
+
+.content {
+    display: grid;
+    place-items: center;
+    margin: 25px 0;
+}
+
+.logo {
+    max-width: 200px;
+}
+
+.link {
+    composes: button-reset from '../styles/shared/buttons.module.css';
+    composes: link from '../styles/application.module.css';
+    font-weight: 500;
+
+    &[disabled] {
+        color: var(--grey600);
+        cursor: wait;
+    }
+}

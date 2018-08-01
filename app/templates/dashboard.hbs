@@ -1,0 +1,76 @@
+{{page-title 'Dashboard'}}
+
+<PageHeader local-class="header">
+  {{svg-jar "dashboard" local-class="header-icon"}}
+  <h1>My Dashboard</h1>
+  <div local-class="stats">
+    <div local-class='downloads'>
+      {{svg-jar "download" local-class="header-icon"}}
+      <span local-class='num'>{{format-num this.myStats.total_downloads}}</span>
+      <span local-class="stats-label">Total Downloads</span>
+    </div>
+  </div>
+</PageHeader>
+
+<div local-class="my-info">
+  <div local-class="my-crate-lists">
+    <div local-class="header">
+      <h2>
+        {{svg-jar "my-packages"}}
+        My Crates
+      </h2>
+
+      {{#if this.hasMoreCrates}}
+        <LinkTo @route="me.crates" local-class="my-crates-link">Show all</LinkTo>
+      {{/if}}
+    </div>
+    <CrateDownloadsList @crates={{this.visibleCrates}} />
+
+    <div local-class='header'>
+      <h2>
+        {{svg-jar "following"}}
+        Following
+      </h2>
+
+      {{#if this.hasMoreFollowing}}
+        <LinkTo @route="me.following" local-class="followed-crates-link">Show all</LinkTo>
+      {{/if}}
+    </div>
+    <CrateDownloadsList @crates={{this.visibleFollowing}} />
+  </div>
+
+  <div local-class="my-feed">
+    <h2>
+      {{svg-jar "latest-updates"}}
+      Latest Updates
+    </h2>
+
+    <div local-class="feed">
+      <ul local-class="feed-list">
+        {{#each this.myFeed as |version|}}
+          <div local-class="feed-row">
+            <LinkTo @route="crate.version" @models={{array version.crateName version.num}}>
+              {{ version.crateName }}
+              <span local-class="feed-version">{{ version.num }}</span>
+            </LinkTo>
+            <span local-class="feed-date">
+              {{date-format-distance-to-now version.created_at addSuffix=true}}
+            </span>
+          </div>
+        {{/each}}
+      </ul>
+
+      {{#if this.loadMoreTask.isRunning}}
+        <span local-class='load-more'>
+          <LoadingSpinner />
+        </span>
+      {{else}}
+        {{#if this.hasMore}}
+          <button type="button" local-class='load-more' {{on "click" (perform this.loadMoreTask)}}>
+            Load More
+          </button>
+        {{/if}}
+      {{/if}}
+    </div>
+  </div>
+</div>

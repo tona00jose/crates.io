@@ -1,0 +1,52 @@
+.wrapper {
+    line-height: 1.5;
+    overflow-wrap: break-word;
+
+    > :first-child {
+        margin-top: 0;
+    }
+
+    > :last-child {
+        margin-bottom: 0;
+    }
+
+    img {
+        max-width: 100%;
+    }
+
+    pre {
+        code {
+            display: block;
+            overflow-x: auto;
+            padding: 1em;
+            background-color: #f6f8fa;
+            font-size: 85%;
+            border-radius: 6px;
+        }
+    }
+
+    p {
+        code {
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            font-size: 85%;
+            margin: 0;
+            padding: .2em .4em;
+        }
+    }
+
+    code {
+        font-family: var(--font-monospace);
+    }
+
+    table {
+        border-collapse: collapse;
+        display: block;
+        overflow-x: auto;
+
+        th, td {
+            border: 1px solid #dfe2e5;
+            padding: 6px 13px;
+        }
+    }
+}

@@ -1,0 +1,17 @@
+<HeadLayout />
+
+{{page-title "crates.io: Rust Package Registry" separator=' - ' prepend=true}}
+{{set-theme this.design.theme}}
+
+<ProgressBar/>
+<NotificationContainer @position="top-right"/>
+
+<Header @hero={{this.isIndex}} />
+
+<main local-class="main">
+  <div local-class="inner-main">
+    {{outlet}}
+  </div>
+</main>
+
+<Footer/>
